@@ -15,7 +15,6 @@ const Autosuggest: React.FC<AutosuggestProps> = ({ setName }) => {
       const { data } = await supabase.from("guests").select("name");
       if (data) {
         setGuestNames(data.map((guest) => guest.name));
-        console.log(suggestions);
       }
     };
     fetchNames();
@@ -34,6 +33,8 @@ const Autosuggest: React.FC<AutosuggestProps> = ({ setName }) => {
           suggestion.toLowerCase().startsWith(term.toLowerCase())
         )
       );
+    } else {
+      setSuggestions([]);
     }
   };
 
