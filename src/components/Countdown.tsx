@@ -27,25 +27,33 @@ const Countdown = ({ targetDate }: { targetDate: string }) => {
     <div className="grid grid-flow-col gap-5 text-center auto-cols-max rounded-box">
       <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
         <span className="countdown countdown-days font-mono text-5xl">
-          <span style={{ "--value": timeLeft.days }}></span>
+          <span
+            style={{ "--value": timeLeft.days } as React.CSSProperties}
+          ></span>
         </span>
         days
       </div>
       <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
         <span className="countdown font-mono text-5xl">
-          <span style={{ "--value": timeLeft.hours }}></span>
+          <span
+            style={{ "--value": timeLeft.hours } as React.CSSProperties}
+          ></span>
         </span>
         hours
       </div>
       <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
         <span className="countdown font-mono text-5xl">
-          <span style={{ "--value": timeLeft.minutes }}></span>
+          <span
+            style={{ "--value": timeLeft.minutes } as React.CSSProperties}
+          ></span>
         </span>
         min
       </div>
       <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
         <span className="countdown font-mono text-5xl">
-          <span style={{ "--value": timeLeft.seconds }}></span>
+          <span
+            style={{ "--value": timeLeft.seconds } as React.CSSProperties}
+          ></span>
         </span>
         sec
       </div>
