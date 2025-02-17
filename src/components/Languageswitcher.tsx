@@ -1,16 +1,16 @@
-// src/components/LanguageSwitcher.tsx
 import { useState } from "react";
 
-const LanguageSwitcher = ({
-  onChange,
-}: {
-  onChange: (lang: string) => void;
-}) => {
-  const [lang, setLang] = useState("en");
+interface LanguageSwitcherProps {
+  onChange: (lang: "en" | "pl" | "gr") => void;
+}
+
+const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ onChange }) => {
+  const [lang, setLang] = useState<"en" | "pl" | "gr">("en");
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLang(e.target.value);
-    onChange(e.target.value);
+    const selectedLang = e.target.value as "en" | "pl" | "gr";
+    setLang(selectedLang);
+    onChange(selectedLang);
   };
 
   return (

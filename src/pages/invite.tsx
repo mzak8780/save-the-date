@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import "../app/globals.css";
 import Countdown from "../components/Countdown";
-import LanguageSwitcher from "../components/Languageswitcher";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 
 export default function Invite() {
   const router = useRouter();
