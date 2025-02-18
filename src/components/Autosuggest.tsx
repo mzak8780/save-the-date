@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
+import { useTranslation } from "next-i18next";
 
 interface AutosuggestProps {
   setName: (name: string) => void;
@@ -9,6 +10,7 @@ const Autosuggest: React.FC<AutosuggestProps> = ({ setName }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [guestNames, setGuestNames] = useState<string[]>([]);
   const [suggestions, setSuggestions] = useState<string[]>([]);
+  const { t } = useTranslation("common");
 
   useEffect(() => {
     const fetchNames = async () => {
@@ -48,7 +50,7 @@ const Autosuggest: React.FC<AutosuggestProps> = ({ setName }) => {
     <div className="form-control">
       <input
         type="text"
-        placeholder="Enter your name..."
+        placeholder={t("enterYourName")}
         value={searchTerm}
         onChange={handleInputChange}
         required

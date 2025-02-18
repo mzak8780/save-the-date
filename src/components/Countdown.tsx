@@ -1,5 +1,6 @@
 // src/components/Countdown.tsx
 import { useEffect, useState } from "react";
+import { useTranslation } from "next-i18next";
 
 const calculateTimeLeft = (targetDate: string) => {
   const difference = +new Date(targetDate) - +new Date();
@@ -14,6 +15,7 @@ const calculateTimeLeft = (targetDate: string) => {
 };
 
 const Countdown = ({ targetDate }: { targetDate: string }) => {
+  const { t } = useTranslation("common");
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
 
   useEffect(() => {
@@ -31,7 +33,7 @@ const Countdown = ({ targetDate }: { targetDate: string }) => {
             style={{ "--value": timeLeft.days } as React.CSSProperties}
           ></span>
         </span>
-        days
+        {t("days")}
       </div>
       <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
         <span className="countdown font-mono text-5xl">
@@ -39,7 +41,7 @@ const Countdown = ({ targetDate }: { targetDate: string }) => {
             style={{ "--value": timeLeft.hours } as React.CSSProperties}
           ></span>
         </span>
-        hours
+        {t("hours")}
       </div>
       <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
         <span className="countdown font-mono text-5xl">
@@ -47,7 +49,7 @@ const Countdown = ({ targetDate }: { targetDate: string }) => {
             style={{ "--value": timeLeft.minutes } as React.CSSProperties}
           ></span>
         </span>
-        min
+        {t("minutes")}
       </div>
       <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
         <span className="countdown font-mono text-5xl">
@@ -55,7 +57,7 @@ const Countdown = ({ targetDate }: { targetDate: string }) => {
             style={{ "--value": timeLeft.seconds } as React.CSSProperties}
           ></span>
         </span>
-        sec
+        {t("seconds")}
       </div>
     </div>
   );

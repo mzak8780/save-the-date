@@ -1,28 +1,19 @@
-import { useState } from "react";
+import { useRouter } from "next/router";
 
-interface LanguageSwitcherProps {
-  onChange: (lang: "en" | "pl" | "gr") => void;
-}
+const LanguageSwitcher = () => {
+  const router = useRouter();
+  const { query, pathname, asPath } = router; // Get current path and query params
 
-const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ onChange }) => {
-  const [lang, setLang] = useState<"en" | "pl" | "gr">("en");
-
-  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedLang = e.target.value as "en" | "pl" | "gr";
-    setLang(selectedLang);
-    onChange(selectedLang);
+  const changeLanguage = (lang: string) => {
+    router.push({ pathname, query }, asPath, { locale: lang });
   };
 
   return (
-    <select
-      value={lang}
-      onChange={handleLanguageChange}
-      className="p-2 border rounded"
-    >
-      <option value="en">English</option>
-      <option value="pl">Polish</option>
-      <option value="gr">Greek</option>
-    </select>
+    <div className="flex space-x-2">
+      <button onClick={() => changeLanguage("en")}>🇬🇧 English</button>
+      <button onClick={() => changeLanguage("pl")}>🇵🇱 Polish</button>
+      <button onClick={() => changeLanguage("gr")}>🇬🇷 Greek</button>
+    </div>
   );
 };
 
