@@ -1,24 +1,24 @@
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
 import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import "../app/globals.css";
 import Countdown from "../components/Countdown";
 import LanguageSwitcher from "../components/LanguageSwitcher";
+import { getI18nStaticProps } from "../utils/getStaticProps";
 
 export default function Invite() {
   const { t } = useTranslation("common"); // Ensure "common" is the correct namespace
   const router = useRouter();
   const { name } = router.query;
   const weddingDate = "2026-03-21T00:00:00";
+  const weddingDateText = "21.03.2026";
 
   if (!name) return <p className="text-center">Loading...</p>;
 
   return (
     <div
-      className="bg-accent flex flex-col items-center justify-center min-h-screen p-4"
+      className="bg-accent flex flex-col font-montserrat items-center justify-center min-h-screen p-4"
       data-theme="pastel"
     >
       <div className="absolute top-4 right-4">
@@ -29,9 +29,19 @@ export default function Invite() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <h1 className="text-4xl font-bold mt-4">{t("welcome")}</h1>
-        {name}!
+        <h1>
+          {t("welcome")} {name}!
+        </h1>
       </motion.h1>
+      <motion.h2
+        className="text-4xl mt-4 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+      >
+        <h2>{t("couple")}</h2>
+        <h2>{weddingDateText}</h2>
+      </motion.h2>
       <motion.p
         className="mt-2 text-xl"
         initial={{ opacity: 0 }}
@@ -47,8 +57,6 @@ export default function Invite() {
         transition={{ delay: 0.8 }}
       >
         <Countdown targetDate={weddingDate} />
-
-        <p className="text-gray-700 text-lg p-2">{t("march21")}</p>
       </motion.div>
       <motion.div
         className="mt-4"
@@ -68,11 +76,4 @@ export default function Invite() {
   );
 }
 
-// ✅ Fetch translations on server-side
-export async function getStaticProps({ locale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common"])),
-    },
-  };
-}
+export { getI18nStaticProps as getStaticProps };

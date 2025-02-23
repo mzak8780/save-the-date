@@ -14,9 +14,9 @@ const Autosuggest: React.FC<AutosuggestProps> = ({ setName }) => {
 
   useEffect(() => {
     const fetchNames = async () => {
-      const { data } = await supabase.from("guests").select("name");
+      const { data } = await supabase.from("guests").select("full_name");
       if (data) {
-        setGuestNames(data.map((guest) => guest.name));
+        setGuestNames(data.map((guest) => guest.full_name));
       }
     };
     fetchNames();
@@ -43,7 +43,7 @@ const Autosuggest: React.FC<AutosuggestProps> = ({ setName }) => {
   const handleSuggestionClick = (suggestion: string) => {
     setSearchTerm(suggestion);
     setSuggestions([]);
-    setName(suggestion);
+    setName(suggestion.split(" ")[0]);
   };
 
   return (
