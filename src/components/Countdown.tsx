@@ -26,33 +26,33 @@ const Countdown = ({ targetDate }: { targetDate: string }) => {
   }, []);
 
   return (
-    <div className="grid grid-flow-col gap-5 text-center auto-cols-max rounded-box">
-      <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-        <span className="countdown countdown-days font-mono text-5xl">
+    <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
+      <div className="flex flex-col p-2 rounded-box text-neutral-content">
+        <span className="countdown countdown-days text-5xl">
           <span
             style={{ "--value": timeLeft.days } as React.CSSProperties}
           ></span>
         </span>
         {t("days")}
       </div>
-      <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-        <span className="countdown font-mono text-5xl">
+      <div className="flex flex-col p-2 rounded-box text-neutral-content">
+        <span className="countdown  text-5xl">
           <span
             style={{ "--value": timeLeft.hours } as React.CSSProperties}
           ></span>
         </span>
         {t("hours")}
       </div>
-      <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-        <span className="countdown font-mono text-5xl">
+      <div className="flex flex-col p-2  rounded-box text-neutral-content">
+        <span className="countdown text-5xl">
           <span
             style={{ "--value": timeLeft.minutes } as React.CSSProperties}
           ></span>
         </span>
         {t("minutes")}
       </div>
-      <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-        <span className="countdown font-mono text-5xl">
+      <div className="flex flex-col p-2 rounded-box text-neutral-content">
+        <span className="countdown text-5xl">
           <span
             style={{ "--value": timeLeft.seconds } as React.CSSProperties}
           ></span>
