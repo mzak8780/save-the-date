@@ -22,18 +22,9 @@ export default function Invite() {
       className="flex flex-col font-montserrat items-center justify-center min-h-screen p-4"
       data-theme="pastel"
     >
-      <div className="absolute bottom-0 w-full overflow-hidden">
-        <Image
-          src="/heart.png"
-          alt="Flowers"
-          width={3200}
-          height={3200}
-          className="w-full"
-        />
-      </div>
       <div className="absolute top-0 left-4 z-0">
         <Image
-          src="/flower2.png"
+          src="/flowers3.png"
           alt="Flowers"
           width={400}
           height={400}
@@ -42,7 +33,7 @@ export default function Invite() {
       </div>
       <div className="absolute bottom-0 right-0 z-0">
         <Image
-          src="/flower2.png"
+          src="/flowers3.png"
           alt="Flowers Bottom"
           width={400}
           height={400}
